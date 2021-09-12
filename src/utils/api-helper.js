@@ -1,0 +1,1 @@
+export const baseAPI = "https://localhost:1998/api";
