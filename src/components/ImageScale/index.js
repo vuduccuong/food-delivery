@@ -6,7 +6,7 @@ const ImageScale = (props) => {
     <img
       src={image}
       alt={title}
-      className="w-full transform hover:scale-150 transition duration-300"
+      className="w-full transform hover:scale-125 transition duration-300"
       loading="lazy"
     ></img>
   );

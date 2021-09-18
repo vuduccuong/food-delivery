@@ -1,51 +1,53 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Pager from "../../../../components/Pager";
 import { STATUS_TYPE } from "../../../../utils/constants";
 import Form from "../../components/Form";
 import Table from "../../components/Table";
-import { addMenu } from "./menu-slide";
+import { addMenu, onDeleteMenu } from "./menu-slide";
 
 const MenuPage = () => {
   const dispatch = useDispatch();
   const [isUpdate, setIsUpdate] = useState(false);
   const menuData = useSelector((state) => state.menu.items);
   const status = useSelector((state) => state.menu.status);
-  const initForm = {
-    menuName: "",
-    menuImage: "",
-    price: 0,
-    menuTypeId: 1,
-    ingredients: "",
-  };
-  const [frmData, setFrmData] = useState(initForm);
+
+  const nameInputRef = useRef();
+  const imageInputRef = useRef();
+  const typeInputRef = useRef();
+  const priceInputRef = useRef();
+  const ingredientsInputRef = useRef();
+
+  const [frmData, setFrmData] = useState({});
 
   const onEditClickHandle = (e, menu) => {
     const { menuName, menuImage, menuTypeId, price, ingredients } = menu;
     e.preventDefault();
     setIsUpdate(true);
-    setFrmData((preState) => {
-      return {
-        ...preState,
-        menuName: menuName,
-        menuImage: menuImage,
-        menuTypeId: menuTypeId,
-        price: +price,
-        ingredients: ingredients,
-      };
-    });
+    setFrmData(menu);
+
+    nameInputRef.current.value = menuName;
+    imageInputRef.current.value = menuImage;
+    typeInputRef.current.value = menuTypeId;
+    priceInputRef.current.value = price;
+    ingredientsInputRef.current.value = ingredients;
   };
-  console.log(frmData);
+
   const addEditHandle = (e) => {
     e.preventDefault();
     const menu = {
-      menuName: "Test",
-      price: 123.4,
-      menuImage: "/images/burger.png",
-      ingredients: "Ahihi, Ahii, Ahii",
-      menuTypeId: 1,
+      ...frmData,
+      menuName: nameInputRef.current.value,
+      price: priceInputRef.current.value,
+      menuImage: imageInputRef.current.value,
+      ingredients: ingredientsInputRef.current.value,
+      menuTypeId: typeInputRef.current.value,
     };
     dispatch(addMenu(menu));
+  };
+
+  const onDeleteClickHandle = (id) => {
+    dispatch(onDeleteMenu(id));
   };
 
   return (
@@ -54,7 +56,15 @@ const MenuPage = () => {
         Menu
       </h2>
       <div className="p-4 bg-white rounded-lg shadow-lg">
-        <Form isUpdate={isUpdate} actionSubmit={addEditHandle} initData={frmData} />
+        <Form
+          isUpdate={isUpdate}
+          actionSubmit={addEditHandle}
+          menuName={nameInputRef}
+          menuImage={imageInputRef}
+          price={priceInputRef}
+          menuTypeId={typeInputRef}
+          ingredients={ingredientsInputRef}
+        />
       </div>
 
       {status === STATUS_TYPE.LOADING ? (
@@ -72,9 +82,10 @@ const MenuPage = () => {
               ]}
               tbodies={menuData}
               actionEdit={onEditClickHandle}
+              actionDelete={onDeleteClickHandle}
             />
           </div>
-          <Pager />
+          <Pager total={menuData.length} />
         </div>
       )}
     </Fragment>

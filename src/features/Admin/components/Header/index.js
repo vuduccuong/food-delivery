@@ -1,7 +1,15 @@
 import React from "react";
+import { useHistory } from "react-router";
 import Search from "./search";
 
 const Header = () => {
+
+  const history = useHistory();
+
+  const onLogouthandle = e=>{
+    history.push('/admin/login');
+  }
+
   return (
     <header className="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
       <div className="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300">
@@ -34,16 +42,18 @@ const Header = () => {
           </li>
           <li className="relative">
             <button
-              className="align-middle rounded-full focus:shadow-outline-purple focus:outline-none"
+              className="align-middle rounded-full focus:shadow-outline-purple focus:outline-none flex  items-center"
               aria-label="Account"
               aria-haspopup="true"
+              onClick={onLogouthandle}
             >
               <img
-                className="object-cover w-8 h-8 rounded-full"
+                className="object-cover w-8 h-8 rounded-full mr-3"
                 src="https://images.unsplash.com/photo-1502378735452-bc7d86632805?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&s=aa3a807e1bbdfd4364d1f449eaa96d82"
                 alt=""
                 aria-hidden="true"
               />
+              Logout
             </button>
           </li>
         </ul>

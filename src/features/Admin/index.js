@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch, useRouteMatch } from "react-router";
+import { Redirect, Route, Switch, useRouteMatch } from "react-router";
 import LayoutAdmin from "./components/Layout";
 import DashBoardPage from "./pages/Dashboard";
 import LoginPage from "./pages/Login";

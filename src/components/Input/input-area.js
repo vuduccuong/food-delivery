@@ -7,7 +7,7 @@ const FormArea = (props) => {
     col,
     placeholder = "",
     extendClass,
-    valueInit,
+    myRef,
   } = props;
   return (
     <label className="block mt-4 text-sm">
@@ -17,7 +17,7 @@ const FormArea = (props) => {
         rows={row}
         cols={col}
         placeholder={placeholder}
-        defaultValue={valueInit}
+        ref={myRef}
       ></textarea>
     </label>
   );
