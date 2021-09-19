@@ -49,7 +49,10 @@ const ShopingCart = () => {
               </tbody>
             </table>
             <div className="mt-5 text-lg">
-              Total: $ <span className="text-custom-yellow">{totalMoney}</span>
+              Total: ${" "}
+              <span className="text-custom-yellow">
+                {Math.round(totalMoney * 100) / 100}
+              </span>
             </div>
             <button className="rounded-lg bg-custom-yellow px-4 py-2 font-bold mt-6">
               Order Pay
