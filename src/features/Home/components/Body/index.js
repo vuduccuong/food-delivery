@@ -13,7 +13,7 @@ const MainBody = () => {
   return (
     <div className="p-32" id="order">
       <div className="font-bold text-center text-5xl">What's the mood?</div>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mt-12 font-bold text-center items-center text-lg">
+      <div className="grid md:grid-cols-3 lg:grid-cols-5 mt-12 font-bold text-center items-center text-lg">
         <Link to="/orders/salad" className="my-3">
           <div className="bg-custom-yellow rounded-full py-6 w-4/5 md:w-1/3 mx-auto">
             <span className="bg-white p-4 rounded-full text-center">
@@ -46,7 +46,7 @@ const MainBody = () => {
             <span className="block mt-5">Drinks</span>
           </div>
         </Link>
-        <Link to="/orders/dessert" className="my-3">
+        <Link to="/orders/drink" className="my-3">
           <div className="bg-custom-yellow rounded-full py-6 w-4/5 md:w-1/3 mx-auto">
             <span className="bg-white p-4 rounded-full">
               <FontAwesomeIcon icon={faIceCream} />

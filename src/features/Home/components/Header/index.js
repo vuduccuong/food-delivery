@@ -19,7 +19,7 @@ const Header = () => {
                 <span className="font-bold text-hero">
                     Ninja food
                 </span>
-                <span className="font-bold text-6xl block ml-48 xl:block">
+                <span className="font-bold text-6xl block lg:ml-48 xl:block">
                     your choice
                 </span>
             </div>
