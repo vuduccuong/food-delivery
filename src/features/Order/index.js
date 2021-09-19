@@ -6,7 +6,7 @@ const OrderPage = () => {
   const match = useRouteMatch();
   return (
     <Switch>
-      <Route path={`${match.url}/:menuType`} component={MainPage} />
+      <Route exact path={`${match.url}/:menuType`} component={MainPage} />
     </Switch>
   );
 };
