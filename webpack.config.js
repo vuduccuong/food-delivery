@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 
 module.exports = {
-  mode: "development", //production
+  mode: "production", //production
   entry: "./src/index.js",
   output: {
     filename: "[name].bundle.js",

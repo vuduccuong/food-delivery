@@ -1,5 +1,5 @@
 import React, { Suspense, useLayoutEffect } from "react";
-import { Redirect, Route, Switch, useLocation } from "react-router-dom";
+import { Route, Switch, useLocation } from "react-router-dom";
 import AdminPage from "../features/Admin";
 import HomePage from "../features/Home";
 import OrderPage from "../features/Order";
@@ -13,7 +13,7 @@ const App = () => {
   return (
     <Switch>
       <Route exact path="/" component={HomePage} />
-      <Route path="/orders" component={OrderPage} />
+      <Route exact path="/orders" component={OrderPage} />
       <Route path="/admin" component={AdminPage} />
     </Switch>
   );
