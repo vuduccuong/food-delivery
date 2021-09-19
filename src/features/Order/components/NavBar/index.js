@@ -30,7 +30,6 @@ const NavBar = () => {
           </h1>
           <div
             className="px-4 cursor-pointer lg:hidden"
-            id="open-menu"
             onClick={showMenuHandle}
           >
             <FontAwesomeIcon icon={faBars} />
@@ -38,7 +37,7 @@ const NavBar = () => {
         </div>
         <ul
           className={`${!showMenu ? "" : 'hidden'} lg:block mr-10 mb-10`}
-          id="menu"
+          onClick={showMenuHandle}
         >
           <li className="my-3">
             <NavLink

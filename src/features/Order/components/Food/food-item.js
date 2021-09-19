@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Card from "../../../../components/Card";
 import ImageScale from "../../../../components/ImageScale";
 
@@ -13,7 +13,7 @@ const FoodItem = (props) => {
         <span className="block text-gray-600 text-sm">{ingredients}</span>
         <span className="block text-custom-yellow mt-10 font-bold text-3xl">
           $ {price}
-          {unit ?? ""}
+          {unit ? `/ ${unit}` : null}
         </span>
       </div>
     </Card>
