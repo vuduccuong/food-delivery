@@ -7,12 +7,15 @@ import {
   faUserNinja,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { Link, NavLink, useParams, useRouteMatch } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink} from "react-router-dom";
 
 const NavBar = () => {
-  const match = useRouteMatch();
-  const params = useParams();
+  const [showMenu, setShowMenu] = useState(true);
+
+  const showMenuHandle = () => {
+    setShowMenu(!showMenu);
+  };
 
   return (
     <div className="lg:col-span-1">
@@ -25,11 +28,18 @@ const NavBar = () => {
               <span className="text-red-700">Ninja</span>
             </NavLink>
           </h1>
-          <div className="px-4 cursor-pointer lg:hidden" id="open-menu">
+          <div
+            className="px-4 cursor-pointer lg:hidden"
+            id="open-menu"
+            onClick={showMenuHandle}
+          >
             <FontAwesomeIcon icon={faBars} />
           </div>
         </div>
-        <ul className="hidden lg:block mr-10 mb-10" id="menu">
+        <ul
+          className={`${!showMenu ? "" : 'hidden'} lg:block mr-10 mb-10`}
+          id="menu"
+        >
           <li className="my-3">
             <NavLink
               to="/orders/salad"
